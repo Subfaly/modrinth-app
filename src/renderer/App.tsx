@@ -1,40 +1,31 @@
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
-import icon from '../../assets/icon.svg';
 import './App.css';
-
+import { useEffect, useState } from 'react';
+import ModPage from "./ModPage"
 function Hello() {
+  let [data, setData] = useState([]);
+  let onLoad = async() => {
+    let dt = await fetch('https://api.modrinth.com/v2/search');
+    let json = await dt.json();
+    console.log(json)
+    setData(json['hits']);
+    console.log(Object.values(json['hits']));
+    console.log(json["hits"])
+    
+  }
+   useEffect(() => {
+     onLoad();
+     
+   }, []);
   return (
-    <div>
-      <div className="Hello">
-        <img width="200" alt="icon" src={icon} />
+    <div className='main'>
+      <h1>Modrinth</h1>
+      <div className='mod-container'>
+        {data.map((dat) => 
+      <ModPage data={dat} key={dat["project_id"]}/>
+      )}
       </div>
-      <h1>electron-react-boilerplate</h1>
-      <div className="Hello">
-        <a
-          href="https://electron-react-boilerplate.js.org/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <button type="button">
-            <span role="img" aria-label="books">
-              📚
-            </span>
-            Read our docs
-          </button>
-        </a>
-        <a
-          href="https://github.com/sponsors/electron-react-boilerplate"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <button type="button">
-            <span role="img" aria-label="folded hands">
-              🙏
-            </span>
-            Donate
-          </button>
-        </a>
-      </div>
+      
     </div>
   );
 }
