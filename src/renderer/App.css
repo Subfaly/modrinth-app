@@ -3,6 +3,7 @@ body {
      font-family: 'Roboto', sans-serif;
      background-color: #16181c;
      color:#b1bac5;
+     overflow-x: hidden;
 }
 
 .mod-title{
@@ -45,8 +46,8 @@ body {
      grid-area: 2 / 2;
      border-radius: 1.5em;
      font-family: 'Roboto', sans-serif;
-     padding: 0.25vw;
-     font-size: 1em;
+     padding: 0.1vw;
+     font-size: 1vw;
      font-weight: 500;
      transition-duration: 200ms;
 }
