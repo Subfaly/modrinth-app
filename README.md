@@ -4,7 +4,7 @@
 
 The app aims to make it simple to use with any minecraft  client.
 
-
+If you want to download the official modrinth app you will need to go to their discord labs.
 
 
 
